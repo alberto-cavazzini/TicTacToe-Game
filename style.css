@@ -1,20 +1,119 @@
-.cell{
-  width: 75px;
-  height: 75px;
-  border: 2px solid;
-  box-shadow: 0 0 0 2px;
-  line-height: 75px;
-  font-size: 50px;
-  cursor: pointer;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right bottom, #303952, #474787); /* Sfondo gradiente scuro-bluastro */
+    font-family: 'Nunito', sans-serif; /* Font generale */
+    color: #e0e0e0; /* Colore testo chiaro */
+    overflow: hidden; /* Evita scroll indesiderato */
 }
 
-#gameContainer{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  text-align: center;
+#gameWrapper {
+    background-color: #2f3640; /* Sfondo scuro per il contenitore del gioco */
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), /* Ombra più pronunciata */
+                inset 0 0 15px rgba(255, 255, 255, 0.05); /* Leggera ombra interna */
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordo sottile */
+    transform-origin: center center; /* Punto di origine per la scala */
 }
-#cellContainer{
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  width: 225px;
-  margin: auto;
+
+h1 {
+    font-size: 3.5em;
+    color: #ffd700; /* Oro per il titolo */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ombra al testo */
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-weight: 900; /* Più spesso */
+}
+
+#cellContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* Cella da 100px */
+    grid-template-rows: repeat(3, 100px);
+    width: 300px; /* 3 * 100px */
+    height: 300px;
+    margin: 30px auto;
+    border: 3px solid #8e44ad; /* Bordo viola più scuro per il contenitore griglia */
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(142, 68, 173, 0.5); /* Ombra interna viola */
+    background-color: #3f51b5; /* Blu medio scuro per lo sfondo della griglia */
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex; /* Centra il contenuto */
+    justify-content: center;
+    align-items: center;
+    font-size: 70px; /* Dimensione dei simboli X/O */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordi sottili tra le celle */
+    /* Colori base per le celle */
+    color: #ecf0f1; /* Grigio chiaro per i simboli */
+    background-color: rgba(255, 255, 255, 0.05); /* Sfondo leggermente trasparente */
+}
+
+/* Bordi specifici per la griglia */
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(4), .cell:nth-child(5), .cell:nth-child(7), .cell:nth-child(8) {
+    border-right: 2px solid #8e44ad;
+}
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3), .cell:nth-child(4), .cell:nth-child(5), .cell:nth-child(6) {
+    border-bottom: 2px solid #8e44ad;
+}
+
+
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Sfondo più chiaro al hover */
+    transform: scale(1.03); /* Leggero ingrandimento */
+}
+
+/* Colori specifici per X e O per distinguerli */
+.cell.X {
+    color: #e74c3c; /* Rosso brillante per X */
+}
+
+.cell.O {
+    color: #3498db; /* Blu brillante per O */
+}
+
+
+#statusText {
+    font-size: 2.2em;
+    color: #f1c40f; /* Giallo per il testo di stato */
+    margin-top: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+#restartBtn {
+    background-color: #27ae60; /* Verde per il bottone */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#restartBtn:hover {
+    background-color: #219d52; /* Verde più scuro al hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#restartBtn:active {
+    background-color: #1a8f47;
+    transform: translateY(0);
 }
